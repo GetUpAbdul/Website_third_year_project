@@ -44,6 +44,8 @@ def internal_error(error):
     #db_session.rollback()
     return render_template('errors/500.html'), 500
 
+def adder():
+    return 2 + 2
 
 @app.errorhandler(404)
 def not_found_error(error):
