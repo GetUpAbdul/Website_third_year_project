@@ -10,6 +10,10 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 
+@app.route('/index')
+def index():
+    return render_template('pages/placeholder.home.html')
+
 @app.route('/')
 def home():
     return render_template('pages/placeholder.home.html')
@@ -31,6 +35,11 @@ def register():
     form = RegisterForm(request.form)
     return render_template('forms/register.html', form=form)
 
+@app.route('/accessRestrictions')
+def accessRestrictions():
+    return render_template('pages/accessRestrictions.html')
+
+
 @app.route('/cancer')
 def cancer():
     return render_template('pages/cancer.html')
@@ -39,13 +48,27 @@ def cancer():
 def diabetes():
     return render_template('pages/diabetes.html')
 
+@app.route('/user_profiling')
+def user_profiling():
+    return render_template('pages/UserProfiling.html')
+
+@app.route('/medi_Ai_Interface')
+def medi_ai_interface():
+    return render_template('pages/Medi_AI_Interface.html')
+
+@app.route('/aggregationOfNewPatientData.html')
+def aggregationOfNewPatientData():
+    return render_template('pages/aggregationOfNewPatientData.html')
+
+@app.route('/heartDiseases')
+def heartDiseases():
+    return render_template('pages/heartDiseases.html')
+    
 @app.errorhandler(500)
 def internal_error(error):
     #db_session.rollback()
     return render_template('errors/500.html'), 500
 
-def adder():
-    return 2 + 2
 
 @app.errorhandler(404)
 def not_found_error(error):

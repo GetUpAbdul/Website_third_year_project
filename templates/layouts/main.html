@@ -52,18 +52,19 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {% if request.endpoint == 'Access Restrictions' %} class="active" {% endif %}><a href="{{ url_for('home') }}">Access Restrictions</a></li>
-            <li {% if request.endpoint == 'Medi-AI Interface' %} class="active" {% endif %}><a href="{{ url_for('about') }}">Medi-AI Interface</a></li>
-            <li {% if request.endpoint == 'User Profiling' %} class="active" {% endif %}><a href="{{ url_for('about') }}">User Profiling</a></li>
-            <li {% if request.endpoint == 'Aggregation of new patient data' %} class="active" {% endif %}><a href="{{ url_for('about') }}">Aggregation of new patient data</a></li>
+            <li {% if request.endpoint == 'Access Restrictions' %} class="active" {% endif %}><a href="{{ url_for('accessRestrictions') }}">Access Restrictions</a></li>
+            <li {% if request.endpoint == 'Medi-AI Interface' %} class="active" {% endif %}><a href="{{ url_for('medi_ai_interface') }}">Medi-AI Interface</a></li>
+            <li {% if request.endpoint == 'User Profiling' %} class="active" {% endif %}><a href="{{ url_for('user_profiling') }}">User Profiling</a></li>
+            <li {% if request.endpoint == 'Aggregation of new patient data' %} class="active" {% endif %}><a href="{{ url_for('aggregationOfNewPatientData') }}">Aggregation of new patient data</a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">More Information <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a>About</a></li>
+              <ul class="dropdown-menu">                
+                <li><a href="{{ url_for('about') }}">About</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('cancer') }}">Cancer</a></li>
                 <li><a href="{{ url_for('diabetes') }}">Diabetes</a></li>
-                <li><a>Heart disease</a></li>
+                <li><a href="{{ url_for('heartDiseases') }}">Heart Diseases</a></li>
+              </li>
               </ul>
             </li>
           </ul>
