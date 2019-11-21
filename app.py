@@ -35,9 +35,11 @@ def register():
     form = RegisterForm(request.form)
     return render_template('forms/register.html', form=form)
 
+
 @app.route('/accessRestrictions')
 def accessRestrictions():
     return render_template('pages/accessRestrictions.html')
+
 
 
 @app.route('/cancer')
@@ -86,4 +88,4 @@ if not app.debug:
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
