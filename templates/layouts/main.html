@@ -52,7 +52,6 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {% if request.endpoint == 'Access Restrictions' %} class="active" {% endif %}><a href="{{ url_for('accessRestrictions') }}">Access Restrictions</a></li>
             <li {% if request.endpoint == 'Medi-AI Interface' %} class="active" {% endif %}><a href="{{ url_for('medi_ai_interface') }}">Medi-AI Interface</a></li>
             <li {% if request.endpoint == 'User Profiling' %} class="active" {% endif %}><a href="{{ url_for('user_profiling') }}">User Profiling</a></li>
             <li {% if request.endpoint == 'Aggregation of new patient data' %} class="active" {% endif %}><a href="{{ url_for('aggregationOfNewPatientData') }}">Aggregation of new patient data</a></li>
