@@ -1,9 +1,9 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, flash, render_template, request, jsonify, redirect
 import logging
 from logging import Formatter, FileHandler
 from forms import *
-import os
+import os, requests, json
 
 
 app = Flask(__name__)
@@ -24,15 +24,37 @@ def about():
     return render_template('pages/placeholder.about.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm(request.form)
+    api_url = 'https://flask-db-api.herokuapp.com/patient/'
+    patient_data = {'email':'gudsady', 'username': 'dsadsad', 'password': 'sddasdads'}
+    # if form.validate_on_submit():
+    result = requests.get(url=api_url, json=patient_data)
+    print(result.text)
+    # return render_template('pages/placeholder.home.html', form=form)
+    # else:
+    # print("Something went wrong")
     return render_template('forms/login.html', form=form)
 
 
-@app.route('/register')
+@app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm(request.form)
+    api_url = 'https://flask-db-api.herokuapp.com/patient/'
+    if form.validate_on_submit():
+        patient_data = { 'email': form.email.data, 
+                         'username': form.username.data, 
+                         'password': form.password.data }
+        result = requests.post(url=api_url, json=patient_data)
+        print(result)
+        if result.ok:
+            print(result.text)
+            flash("Account created!")
+            return redirect('index')
+    else:
+        flash("Account couldn't be created")
+        print("ERROR")
     return render_template('forms/register.html', form=form)
 
 
@@ -75,6 +97,18 @@ def internal_error(error):
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('errors/404.html'), 404
+
+# @app.route('/handle_data', methods=['POST'])
+# def handle_data():
+#     if request.method == 'POST':
+#         # projectpath = request.form['projectFilepath']
+#         # print(projectpath)
+#         mail = form.projectFilepath.username
+#         print(mail)
+#         # requests.post('https://flask-db-api.herokuapp.com/patinet').content
+#         return render_template("pages/placeholder.home.html"), 200
+#     else:
+#         return render_template("pages/placeholder.home.html"), 200
 
 if not app.debug:
     file_handler = FileHandler('error.log')

@@ -1,9 +1,9 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import TextField, PasswordField
 from wtforms.validators import DataRequired, EqualTo, Length
 
-class RegisterForm(Form):
-    name = TextField(
+class RegisterForm(FlaskForm):
+    username = TextField(
         'Username', validators=[DataRequired(), Length(min=6, max=25)]
     )
     email = TextField(
@@ -19,12 +19,12 @@ class RegisterForm(Form):
     )
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     name = TextField('Username', [DataRequired()])
     password = PasswordField('Password', [DataRequired()])
 
 
-class ForgotForm(Form):
+class ForgotForm(FlaskForm):
     email = TextField(
         'Email', validators=[DataRequired(), Length(min=6, max=40)]
     )
