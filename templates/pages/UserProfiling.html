@@ -5,11 +5,168 @@
 <div class="page-header" style="text-align: left;">
   <h1>User Profiling</h1>
 </div>
-<div id="carousel-notification" class="bootstrap-carousel">
-  <img src="https://cdn.pixabay.com/photo/2016/01/19/15/05/doctor-1149149_960_720.jpg" data-title="doge" data-content="Hey there!">
-  <img src="https://static2.bigstockphoto.com/5/7/1/large1500/175937584.jpg" data-title="laika" data-content="Hey ...!">
-  <img src="https://media.gettyimages.com/photos/medical-doctor-touching-virtual-interface-button-of-healthcare-picture-id701251824" data-title="Medical Doctor">
+
+<div id='userForm'>
+<form>
+  <h3>Find medical history</h3> 
+
+  <label>First Name: </label> 
+  <input type='text' name='fname'>
+
+  <label>Last Name: </label> 
+  <input type='text' name='lname'> <br>
+
+  <input id="submitB" type='submit' value='Search'>
+</form>
+
+<table class="table" id="diabtable">
+  <h3> Diabetes Records </h3>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"># Pregnant</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Blood Pressure</th>
+        <th scope="col">Skin FOld</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Pedire Function </th>
+        <th scope="col">Age</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ record.times_pregnant }}</td>
+          <td>{{ record.glucose }}</td>
+          <td>{{ record.blood_pressure }}</td>
+          <td>{{ record.skin_fold }}</td>
+          <td>{{ record.bmi }}</td>
+          <td>{{ record.ped_function }}</td>
+          <td>{{ record.age }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <h3> Breast Cancer Records </h3>
+  <table class="table" id="cancertable">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Age</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Insulin</th>
+        <th scope="col">HOMA</th>
+        <th scope="col">Leptin</th>
+        <th scope="col">Adiponectin</th>
+        <th scope="col">Resistin</th>
+        <th scope="col">MCP</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{ record.age }}</td>
+            <td>{{ record.bmi }}</td>
+            <td>{{ record.glulcose }}</td>
+            <td>{{ record.insulin }}</td>
+            <td>{{ record.homa }}</td>
+            <td>{{ record.leptin }}</td>
+            <td>{{ record.adiponectin }}</td>
+            <td>{{ record.reistin }}</td>
+            <td>{{ record.mcp }}</td>
+
+          </tr>
+        {% endfor %}
+  </table>
+
+  <h3> Heart Disease Records </h3>
+  <table class="table" id="hearttable">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>
 <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+
+<script>
+var myList = [
+  { "name": "abc", "age": 50 },
+]
+
+var _table_ = document.createElement('table'),
+  _tr_ = document.createElement('tr'),
+  _th_ = document.createElement('th'),
+  _td_ = document.createElement('td');
+
+// Builds the HTML Table out of myList json data from Ivy restful service.
+function buildHtmlTable(arr) {
+  var table = _table_.cloneNode(false),
+    columns = addAllColumnHeaders(arr, table);
+  for (var i = 0, maxi = arr.length; i < maxi; ++i) {
+    var tr = _tr_.cloneNode(false);
+    for (var j = 0, maxj = columns.length; j < maxj; ++j) {
+      var td = _td_.cloneNode(false);
+      cellValue = arr[i][columns[j]];
+      td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  return table;
+}
+
+// Adds a header row to the table and returns the set of columns.
+// Need to do union of keys from all records as some records may not contain
+// all records
+function addAllColumnHeaders(arr, table) {
+  var columnSet = [],
+    tr = _tr_.cloneNode(false);
+  for (var i = 0, l = arr.length; i < l; i++) {
+    for (var key in arr[i]) {
+      if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
+        columnSet.push(key);
+        var th = _th_.cloneNode(false);
+        th.appendChild(document.createTextNode(key));
+        tr.appendChild(th);
+      }
+    }
+  }
+  table.appendChild(tr);
+  return columnSet;
+}
+
+buildHtmlTable(myList);
+</script>
 
 {% endblock %}

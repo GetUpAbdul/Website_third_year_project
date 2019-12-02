@@ -5,7 +5,6 @@ from logging import Formatter, FileHandler
 from forms import *
 import os
 
-
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -52,7 +51,9 @@ def diabetes():
 
 @app.route('/user_profiling')
 def user_profiling():
-    return render_template('pages/UserProfiling.html')
+    records = {"times_pregnant": "2", "glucose": "16.5", "blood_pressure": "110", "skin_fold": "1.25", "bmi": "30.2", "ped_function": "4", "age": "25"}, {"times_pregnant": "4", "glucose": "45", "blood_pressure": "120", "skin_fold": "2.2", "bmi": "25.2", "ped_function": "2", "age": "55"}
+
+    return render_template('pages/UserProfiling.html', records=records)
 
 @app.route('/medi_Ai_Interface')
 def medi_ai_interface():
