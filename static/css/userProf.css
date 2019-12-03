@@ -1,10 +1,21 @@
 #userForm {
-    width: 80%;
+    width: 90%;
     margin: auto;
+    text-align: center;
+    display: inline-block;
 
+}
+
+#userForm td {
+    text-align: left;
+}
+
+#userForm label {
+    font-size: 1.5em;
+    
 }
 
 #submitB {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
 }
