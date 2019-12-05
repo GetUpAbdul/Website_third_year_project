@@ -6,10 +6,11 @@
       <a href="{{ url_for('home') }}" title="Back to homepage">
         <i class="fa fa-home pull-right"></i>
       </a>
-      </h3>
-    {{ form.name
+    </h3>
+    {{ form.csrf_token }}
+    {{ form.username
       (class_ = 'form-control first-input', 
-        placeholder = form.name.label.text, 
+        placeholder = form.username.label.text, 
         required = true, 
         autofocus = true) }}
     {{ form.password(class_ = 'form-control last-input', placeholder = form.password.label.text, required = true) }}

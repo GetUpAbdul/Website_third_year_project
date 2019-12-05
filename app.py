@@ -4,6 +4,7 @@ import logging
 from logging import Formatter, FileHandler
 from forms import *
 import os, requests, json
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
@@ -28,10 +29,26 @@ def about():
 def login():
     form = LoginForm(request.form)
     api_url = 'https://flask-db-api.herokuapp.com/patient/'
-    patient_data = {'email':'gudsady', 'username': 'dsadsad', 'password': 'sddasdads'}
-    # if form.validate_on_submit():
-    result = requests.get(url=api_url, json=patient_data)
-    print(result.text)
+    # api_url = 'http://127.0.0.1:5010/patient/'
+
+    if form.validate_on_submit():
+        hashed_pass = generate_password_hash(form.password.data)
+        patient_data = { 
+                         'username': form.username.data, 
+                         'password': form.password.data, 
+                        }
+        result = requests.get(url=api_url, json=patient_data)
+        print(result)
+        if result.ok:
+            print(result.text)
+            flash("Logged in!")
+            return redirect('index')
+        else:
+            flash('')
+    else:
+        flash('There are errors in your form.')
+        print('"ERROR"')
+
     # return render_template('pages/placeholder.home.html', form=form)
     # else:
     # print("Something went wrong")
@@ -42,19 +59,27 @@ def login():
 def register():
     form = RegisterForm(request.form)
     api_url = 'https://flask-db-api.herokuapp.com/patient/'
+    # api_url = 'http://127.0.0.1:5010/patient/'
+
     if form.validate_on_submit():
         patient_data = { 'email': form.email.data, 
                          'username': form.username.data, 
-                         'password': form.password.data }
+                         'first_name': form.first_name.data, 
+                         'last_name': form.last_name.data, 
+                         'password': form.password.data,
+                         'profession': form.profession.data 
+                         }
         result = requests.post(url=api_url, json=patient_data)
         print(result)
         if result.ok:
             print(result.text)
             flash("Account created!")
             return redirect('index')
+        else:
+            flash('')
     else:
-        flash("Account couldn't be created")
-        print("ERROR")
+        flash('Account couldn\'t be created')
+        print('"ERROR"')
     return render_template('forms/register.html', form=form)
 
 
