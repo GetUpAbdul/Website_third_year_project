@@ -5,11 +5,123 @@
 <div class="page-header" style="text-align: left;">
   <h1>User Profiling</h1>
 </div>
-<div id="carousel-notification" class="bootstrap-carousel">
-  <img src="https://cdn.pixabay.com/photo/2016/01/19/15/05/doctor-1149149_960_720.jpg" data-title="doge" data-content="Hey there!">
-  <img src="https://static2.bigstockphoto.com/5/7/1/large1500/175937584.jpg" data-title="laika" data-content="Hey ...!">
-  <img src="https://media.gettyimages.com/photos/medical-doctor-touching-virtual-interface-button-of-healthcare-picture-id701251824" data-title="Medical Doctor">
+
+<div id='userForm'>
+<form>
+  <h2>Find medical history</h2> 
+
+  <label>First Name: </label> 
+  <input type='text' name='fname'>
+
+  <label>Last Name: </label> 
+  <input type='text' name='lname'> <br>
+
+  <input id="submitB" type='submit' value='Search'>
+</form>
+
+<table class="table" id="diabtable">
+  <h3> Diabetes Records </h3>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"># Pregnant</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Blood Pressure</th>
+        <th scope="col">Skin FOld</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Pedire Function </th>
+        <th scope="col">Age</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+        <tr>
+          <td>{{ record.times_pregnant }}</td>
+          <td>{{ record.glucose }}</td>
+          <td>{{ record.blood_pressure }}</td>
+          <td>{{ record.skin_fold }}</td>
+          <td>{{ record.bmi }}</td>
+          <td>{{ record.ped_function }}</td>
+          <td>{{ record.age }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <h3> Breast Cancer Records </h3>
+  <table class="table" id="cancertable">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Age</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Insulin</th>
+        <th scope="col">HOMA</th>
+        <th scope="col">Leptin</th>
+        <th scope="col">Adiponectin</th>
+        <th scope="col">Resistin</th>
+        <th scope="col">MCP</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+          <tr>
+            <td>{{ record.age }}</td>
+            <td>{{ record.bmi }}</td>
+            <td>{{ record.glulcose }}</td>
+            <td>{{ record.insulin }}</td>
+            <td>{{ record.homa }}</td>
+            <td>{{ record.leptin }}</td>
+            <td>{{ record.adiponectin }}</td>
+            <td>{{ record.reistin }}</td>
+            <td>{{ record.mcp }}</td>
+
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+
+  <h3> Heart Disease Records </h3>
+  <table class="table" id="hearttable">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Age</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Blood pressure</th>
+          <th scope="col">Cholesterol</th>
+          <th scope="col">Blood sugar</th>
+          <th scope="col">ECG</th>
+          <th scope="col">Heart rate</th>
+          <th scope="col">Angina</th>
+          <th scope="col">Epression</th>
+          <th scope="col">Peak EXR</th>
+          <th scope="col">Major Vessels</th>
+          <th scope="col">Thal</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for record in records %}
+            <tr>
+              <td>{{ record.age }}</td>
+              <td>{{ record.sex }}</td>
+              <td>{{ record.chest_pain }}</td>
+              <td>{{ record.blood_pressure }}</td>
+              <td>{{ record.cholesterol }}</td>
+              <td>{{ record.blood_sugar }}</td>
+              <td>{{ record.electro }}</td>
+              <td>{{ record.heart_rate }}</td>
+              <td>{{ record.angina }}</td>
+              <td>{{ record.epression }}</td>
+              <td>{{ record.peak_ex }}</td>
+              <td>{{ record.major_vessels }}</td>
+              <td>{{ record.thal }}</td>
+ 
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
 </div>
-<p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+
 
 {% endblock %}
