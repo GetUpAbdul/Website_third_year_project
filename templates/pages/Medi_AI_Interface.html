@@ -1,14 +1,127 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Medi-AI Interface{% endblock %}
+{% block title %}User Profiling{% endblock %}
 {% block content %}
 
-<div class="page-header">
-  <h1>Medi-AI Interface</h1>
+<div class="page-header" style="text-align: left;">
+  <h1>User Profiling</h1>
 </div>
-<p class="lead">This is just a placeholder page which should be replaced with real content.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus ligula, imperdiet id lobortis sit amet, scelerisque non sapien. Duis quis dui quis mauris dapibus fringilla. Pellentesque nec tellus ac diam volutpat malesuada.</p>
-<p>In quam arcu, interdum vel arcu viverra, vulputate convallis massa. Sed hendrerit velit a arcu euismod, sit amet consequat lacus imperdiet. Nullam quis dui sapien. Vestibulum placerat, justo non fringilla laoreet, dui ipsum posuere nisi, nec vestibulum eros leo ut sapien.</p>
-<p>Vivamus eu felis sed magna scelerisque semper in et libero. Curabitur sed convallis odio, quis venenatis sapien. In convallis a velit ac commodo. Donec sapien ligula, vestibulum ut nisi accumsan, facilisis pretium est. Fusce varius semper orci, et egestas nulla cursus a. Phasellus aliquam, mi ac adipiscing lobortis, ipsum augue aliquam ligula, quis fermentum mi augue vel ligula.</p>
-<p>Integer elementum malesuada dolor in aliquet.</p>
+
+<div id='userForm'>
+<form>
+  <h2>Find medical history</h2> 
+
+  <label>First Name: </label> 
+  <input type='text' name='fname'>
+
+  <label>Last Name: </label> 
+  <input type='text' name='lname'> <br>
+
+  <input id="submitB" type='submit' value='Search'>
+</form>
+
+<table class="table" id="diabtable">
+  <h3> Diabetes Records </h3>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"># Pregnant</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Blood Pressure</th>
+        <th scope="col">Skin FOld</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Pedire Function </th>
+        <th scope="col">Age</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+        <tr>
+          <td>{{ record.times_pregnant }}</td>
+          <td>{{ record.glucose }}</td>
+          <td>{{ record.blood_pressure }}</td>
+          <td>{{ record.skin_fold }}</td>
+          <td>{{ record.bmi }}</td>
+          <td>{{ record.ped_function }}</td>
+          <td>{{ record.age }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <h3> Breast Cancer Records </h3>
+  <table class="table" id="cancertable">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Age</th>
+        <th scope="col">BMI</th>
+        <th scope="col">Glucose</th>
+        <th scope="col">Insulin</th>
+        <th scope="col">HOMA</th>
+        <th scope="col">Leptin</th>
+        <th scope="col">Adiponectin</th>
+        <th scope="col">Resistin</th>
+        <th scope="col">MCP</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+          <tr>
+            <td>{{ record.age }}</td>
+            <td>{{ record.bmi }}</td>
+            <td>{{ record.glulcose }}</td>
+            <td>{{ record.insulin }}</td>
+            <td>{{ record.homa }}</td>
+            <td>{{ record.leptin }}</td>
+            <td>{{ record.adiponectin }}</td>
+            <td>{{ record.reistin }}</td>
+            <td>{{ record.mcp }}</td>
+
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+
+  <h3> Heart Disease Records </h3>
+  <table class="table" id="hearttable">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Age</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Blood pressure</th>
+          <th scope="col">Cholesterol</th>
+          <th scope="col">Blood sugar</th>
+          <th scope="col">ECG</th>
+          <th scope="col">Heart rate</th>
+          <th scope="col">Angina</th>
+          <th scope="col">Epression</th>
+          <th scope="col">Peak EXR</th>
+          <th scope="col">Major Vessels</th>
+          <th scope="col">Thal</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for record in records %}
+            <tr>
+              <td>{{ record.age }}</td>
+              <td>{{ record.sex }}</td>
+              <td>{{ record.chest_pain }}</td>
+              <td>{{ record.blood_pressure }}</td>
+              <td>{{ record.cholesterol }}</td>
+              <td>{{ record.blood_sugar }}</td>
+              <td>{{ record.electro }}</td>
+              <td>{{ record.heart_rate }}</td>
+              <td>{{ record.angina }}</td>
+              <td>{{ record.epression }}</td>
+              <td>{{ record.peak_ex }}</td>
+              <td>{{ record.major_vessels }}</td>
+              <td>{{ record.thal }}</td>
+ 
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
 
 {% endblock %}
