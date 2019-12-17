@@ -169,11 +169,11 @@ def medi_ai_interface():
         print('"ERROR"')
     return render_template('pages/Medi_AI_Interface.html', records=records, form=form)
 
-@app.route('/aggregationOfNewPatientData.html')
+@app.route('/AggregationOfNewPatientData.html')
 def aggregationOfNewPatientData():
     return render_template('pages/aggregationOfNewPatientData.html')
 
-@app.route('/heartDiseases')
+@app.route('/HeartDiseases')
 def heartDiseases():
     return render_template('pages/heartDiseases.html')
     
