@@ -1,0 +1,28 @@
+.homecontainer {
+    width: 40%;
+    float: right;
+    margin: 10px;
+    text-emphasis: wrap;
+}
+
+.homecontainerleft {
+    width: 40%;
+    float: left;
+    margin: 10px;
+    text-emphasis: wrap;
+}
+
+.myimage {
+    float: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+.myimageright {
+    float: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+/* https://www.cancer.gov/about-cancer/treatment/types */
