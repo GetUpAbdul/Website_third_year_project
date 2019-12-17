@@ -98,27 +98,55 @@ def diabetes():
 @app.route('/user_profiling')
 def user_profiling():
     diab_url = 'https://flask-db-api.herokuapp.com/diabetes/diabetes_history'
-    
+    can_url = 'https://flask-db-api.herokuapp.com/cancer'
+    heart_url = 'https://flask-db-api.herokuapp.com/heart'
+
     diab_request = requests.get(url=diab_url)
     diab_records = diab_request.json()
-    
-    '''can_url = 'https://flask-db-api.herokuapp.com/diabetes/cancer_history'
-    heart_url = 'https://flask-db-api.herokuapp.com/diabetes/heart_history'
-    
 
-
-    can_request = requests.get(url=api_url)
+    can_request = requests.get(url=can_url)
     can_records = can_request.json()
-
-    heart_request = requests.get(url=api_url)
+    print(can_records)
+    
+    heart_request = requests.get(url=heart_url)
     heart_records = heart_request.json()
 
-    '''
+    dpos = 0
+    dneg = 0
+
+    cpos = 0
+    cneg = 0
+
+    hpos = 0
+    hneg = 0
+
+    for record in diab_records: 
+        if record['prediction'] == 1:
+            dpos += 1
+        elif record['prediction'] == 0:
+            dneg += 1 
+    
+    for record in can_records['data']: 
+        if record['prediction'] == 1:
+            cpos += 1
+        elif record['prediction'] == 0:
+            cneg += 1 
+
+    for record in heart_records['data']: 
+        if record['prediction'] == 1:
+            hpos += 1
+        elif record['prediction'] == 0:
+            hneg += 1 
+
+    dpercent = int(dpos / (dpos + dneg) * 100)
+    cpercent = int(cpos / (cpos + cneg) * 100)
+    hpercent = int(hpos / (hpos + hneg) * 100)
+
     if(diab_request.ok):
         print(diab_request.text)
     else:
         print("Error")
-    return render_template('pages/UserProfiling.html')
+    return render_template('pages/UserProfiling.html',dpos=dpos, dneg=dneg, cpos=cpos, cneg=cneg, hpos=hpos, hneg=hneg, dpercent=dpercent,cpercent=cpercent,hpercent=hpercent)
 
 @app.route('/medi_Ai_Interface', methods=['POST', 'GET'])
 def medi_ai_interface():

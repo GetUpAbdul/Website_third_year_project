@@ -8,4 +8,91 @@
   <h1>User Profiling</h1>
 </div>
 
+<div class="chartcontainer">
+  <h2 class="chartheader"> Diabetes </h2>
+  <canvas width='30' height="10" id="diab"></canvas>
+  <span id="info"> Percentage of patients who return postive Diabetes:<br> {{dpercent}} %</span> 
+</div>
+
+<div class="chartcontainer">
+
+  <h2 class="chartheader"> Breast Cancer </h2>
+  <canvas width='30px' height="10px" id="cancer"></canvas>
+  <span id="info"> Percentage of patients who return positive for Breast Cancer: {{cpercent}} % </span> 
+</div>
+<div class="chartcontainer">
+  <h2 class="chartheader"> Heart Disease </h2>
+  <canvas width='30px' height="10px" id="heart"></canvas>
+  <span id="info"> Percentage of patients who return positive for Heart Disease: {{hpercent}} % </span> 
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"> </script>
+<script>
+console.log("script running");
+console.log({{pos}});
+console.log({{neg}});
+var ctx = document.getElementById('diab').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Positive', 'Negative'],
+        datasets: [
+          {
+            data: [{{dpos}}, {{dneg}}],
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)'
+            ]         
+        }]
+    },
+    options: {
+      rotation: 1 * Math.PI,
+      circumference: 1 * Math.PI
+      
+    }
+  });
+
+var cancercanvas = document.getElementById('cancer').getContext('2d');
+
+var myChart = new Chart(cancercanvas, {
+    type: 'doughnut',
+    data: {
+        labels: ['Positive', 'Negative'],
+        datasets: [
+        { 
+            data: [{{cpos}}, {{cneg}}],
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)'
+            ]         
+        }]
+    },
+    options: {
+      rotation: 1 * Math.PI,
+      circumference: 1 * Math.PI
+    }
+  });
+
+  var heart = document.getElementById('heart').getContext('2d');
+
+var myChart = new Chart(heart, {
+    type: 'doughnut',
+    data: {
+        labels: ['Positive', 'Negative'],
+        datasets: [
+        { 
+            data: [{{hpos}}, {{hneg}}],
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)'
+            ]         
+        }]
+    },
+    options: {
+      rotation: 1 * Math.PI,
+      circumference: 1 * Math.PI
+    }
+  });
+</script>
 {% endblock %}

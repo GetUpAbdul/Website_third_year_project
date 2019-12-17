@@ -19,3 +19,18 @@
     display: block;
     margin: 20px auto;
 }
+
+.chartheader {
+    text-align: center;
+}
+
+#info {
+    font-size: 1em;
+    text-align: center;
+}
+
+.chartcontainer {
+    width: 33%;
+    margin: auto;
+    display: inline-block;
+}
