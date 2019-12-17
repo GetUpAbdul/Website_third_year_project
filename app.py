@@ -97,11 +97,31 @@ def diabetes():
 
 @app.route('/user_profiling')
 def user_profiling():
+    diab_url = 'https://flask-db-api.herokuapp.com/diabetes/diabetes_history'
+    
+    diab_request = requests.get(url=diab_url)
+    diab_records = diab_request.json()
+    
+    '''can_url = 'https://flask-db-api.herokuapp.com/diabetes/cancer_history'
+    heart_url = 'https://flask-db-api.herokuapp.com/diabetes/heart_history'
+    
+
+
+    can_request = requests.get(url=api_url)
+    can_records = can_request.json()
+
+    heart_request = requests.get(url=api_url)
+    heart_records = heart_request.json()
+
+    '''
+    if(diab_request.ok):
+        print(diab_request.text)
+    else:
+        print("Error")
     return render_template('pages/UserProfiling.html')
 
 @app.route('/medi_Ai_Interface', methods=['POST', 'GET'])
 def medi_ai_interface():
-    records = {"times_pregnant": "2", "glucose": "16.5", "blood_pressure": "110", "skin_fold": "1.25", "bmi": "30.2", "ped_function": "4", "age": "25"}, {"times_pregnant": "4", "glucose": "45", "blood_pressure": "120", "skin_fold": "2.2", "bmi": "25.2", "ped_function": "2", "age": "55"}
     form = SearchRecordsForm()
     records = {}
     if form.validate_on_submit():
