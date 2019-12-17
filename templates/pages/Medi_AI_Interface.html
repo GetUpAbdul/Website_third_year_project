@@ -7,14 +7,11 @@
 </div>
 
 <div id='userForm'>
-<form>
+<form method="post" class="form">
   <h2>Find medical history</h2> 
-
-  <label>First Name: </label> 
-  <input type='text' name='fname'>
-
-  <label>Last Name: </label> 
-  <input type='text' name='lname'> <br>
+  {{ form.csrf_token }}
+  {{ form.first_name(class_ = 'form-control', placeholder = form.first_name.label.text, required = true) }}
+  {{ form.last_name(class_ = 'form-control', placeholder = form.last_name.label.text, required = true) }}
 
   <input id="submitB" type='submit' value='Search'>
 </form>
@@ -26,9 +23,9 @@
         <th scope="col"># Pregnant</th>
         <th scope="col">Glucose</th>
         <th scope="col">Blood Pressure</th>
-        <th scope="col">Skin FOld</th>
+        <th scope="col">Skin Fold</th>
         <th scope="col">BMI</th>
-        <th scope="col">Pedire Function </th>
+        <th scope="col">Pedigree Function </th>
         <th scope="col">Age</th>
 
       </tr>
@@ -37,11 +34,11 @@
       {% for record in records %}
         <tr>
           <td>{{ record.times_pregnant }}</td>
-          <td>{{ record.glucose }}</td>
-          <td>{{ record.blood_pressure }}</td>
-          <td>{{ record.skin_fold }}</td>
+          <td>{{ record.glucose_concentration }}</td>
+          <td>{{ record.diastolic_blood_pressure }}</td>
+          <td>{{ record.triceps_skin_fold_thickness }}</td>
           <td>{{ record.bmi }}</td>
-          <td>{{ record.ped_function }}</td>
+          <td>{{ record.diabetes_pedigree_function }}</td>
           <td>{{ record.age }}</td>
         </tr>
       {% endfor %}
@@ -64,7 +61,7 @@
       </tr>
     </thead>
     <tbody>
-        {% for record in records %}
+        {% for record in records_cancer %}
           <tr>
             <td>{{ record.age }}</td>
             <td>{{ record.bmi }}</td>
@@ -100,7 +97,7 @@
         </tr>
       </thead>
       <tbody>
-          {% for record in records %}
+          {% for record in records_heart %}
             <tr>
               <td>{{ record.age }}</td>
               <td>{{ record.sex }}</td>

@@ -23,7 +23,6 @@ def home():
 def about():
     return render_template('pages/placeholder.about.html')
 
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm(request.form)
@@ -100,9 +99,27 @@ def diabetes():
 def user_profiling():
     return render_template('pages/UserProfiling.html')
 
-@app.route('/medi_Ai_Interface')
+@app.route('/medi_Ai_Interface', methods=['POST', 'GET'])
 def medi_ai_interface():
-    return render_template('pages/Medi_AI_Interface.html')
+    records = {"times_pregnant": "2", "glucose": "16.5", "blood_pressure": "110", "skin_fold": "1.25", "bmi": "30.2", "ped_function": "4", "age": "25"}, {"times_pregnant": "4", "glucose": "45", "blood_pressure": "120", "skin_fold": "2.2", "bmi": "25.2", "ped_function": "2", "age": "55"}
+    form = SearchRecordsForm()
+    records = {}
+    if form.validate_on_submit():
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        api_url = 'https://flask-db-api.herokuapp.com/diabetes/patient_history/' + first_name + "/" + last_name
+        result = requests.get(url=api_url)
+        records = result.json()
+        print(result)
+        if result.ok:
+            print(result.text)
+            flash("Got the data!")
+        else:
+            flash('Error')
+    else:
+        flash('Account couldn\'t be created')
+        print('"ERROR"')
+    return render_template('pages/Medi_AI_Interface.html', records=records, form=form)
 
 @app.route('/aggregationOfNewPatientData.html')
 def aggregationOfNewPatientData():
