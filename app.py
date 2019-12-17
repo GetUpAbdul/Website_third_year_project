@@ -118,7 +118,7 @@ def user_profiling():
         print(diab_request.text)
     else:
         print("Error")
-    return render_template('pages/UserProfiling.html')
+    return render_template('pages/UserProfiling.html', )
 
 @app.route('/medi_Ai_Interface', methods=['POST', 'GET'])
 def medi_ai_interface():
