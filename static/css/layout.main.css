@@ -45,3 +45,6 @@ body {
 code {
   font-size: 80%;
 }
+img {
+  float: right;
+}
