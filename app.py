@@ -178,9 +178,9 @@ def medi_ai_interface():
 
 @app.route('/aggregationOfNewPatientData.html')
 def aggregationOfNewPatientData():
-    return render_template('pages/aggregationOfNewPatientData.html')
+    return render_template('pages/AggregationOfNewPatientData.html')
 
-@app.route('/heartDiseases')
+@app.route('/HeartDiseases')
 def heartDiseases():
     return render_template('pages/heartDiseases.html')
     

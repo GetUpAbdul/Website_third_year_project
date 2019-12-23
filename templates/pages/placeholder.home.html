@@ -1,13 +1,21 @@
 {% extends 'layouts/main.html' %} {% block title %}Home{% endblock %} {% block content %}
 
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <div class="page-header" style="text-align: center;">
     <h1>Welcome to Web Patient Medi-Screen</h1>
 </div>
+
 <div id="carousel-notification" class="bootstrap-carousel">
-    <img src="https://cdn.pixabay.com/photo/2016/01/19/15/05/doctor-1149149_960_720.jpg" data-title="doge" data-content="Hey there!">
-    <img src="https://static2.bigstockphoto.com/5/7/1/large1500/175937584.jpg" data-title="laika" data-content="Hey ...!">
-    <img src="https://media.gettyimages.com/photos/medical-doctor-touching-virtual-interface-button-of-healthcare-picture-id701251824" data-title="Medical Doctor">
+    <img class="center" src="static\img\images12.jpg">
+    <img class="center" src="static\img\images11.jpg">
+    <img class="center" src="static\img\image10.jpg">
 </div>
+
+<hr>
+<!--horizontal rular-->
 
 <div class="homecontainer">
     <div class="myimage">
@@ -41,67 +49,66 @@
         <h4>Glycated hemoglobin (A1C) test</h4>
         <p>This blood test indicates your average blood sugar level for the past two to three months. It measures the percentage of blood sugar attached to the oxygen-carrying protein .</P>
     </P>
-    <div class="myimageright">
-        <img src="https://www.cancer.gov/sites/g/files/xnrzdm211/files/styles/cgov_thumbnail/public/cgov_image/media_image/100/600/2/files/couple-comforting-each-other-article.jpg?h=346baab5&itok=YTQW4Nc6" alt="">
-    </div>
-    <P>
-        <h4>Radiation Therapy</h4>
-        <p>Radiation therapy is a type of cancer treatment that uses high doses of radiation to kill cancer cells and shrink tumors. Learn about the types of radiation, why side effects happen, which ones you might have, and more.
-        </P>
-</div>
-<div class="myText">
 
 </div>
+<hr>
+<div id="footercontainer">
+
+    <div id="group1">
+        <h5>PATINTS & VISITORS</h5>
+        <ul>
+            <li><a href="#newProducts">Patient Consent</a></li>
+            <li><a href="#laptops">Admisions</a></li>
+            <li><a href="#desktops">Visit the hospital</a></li>
+            <li><a href="#printers">Pay you bill</a></li>
+        </ul>
+    </div>
+
+    <div id="group2">
+        <h5>OUR SERVICES</h5>
+        <ul>
+            <div>
+                <li><a href="http://127.0.0.1:5000/cancer">Cancer treatmen</a></li>
+            </div>
+            <div>
+                <li><a href="#privacy">Radiation Therapy</a></li>
+            </div>
+            <div>
+                <li><a href="#culture">Chemotherapy</a></li>
+            </div>
+            <div>
+                <li><a href="#culture">Glycated hemoglobin</a></li>
+            </div>
+        </ul>
+    </div>
+    <div id="group3">
+        <h5>RESEARCH & EDUCATION</h5>
+        <ul>
+            <li><a href="#itServices">Training Accredition Report</a></li>
+            <li><a href="#examinations">Nursing & Midwife</a></li>
+            <li><a href="#libraries">Post Graduate Medical Education</a></li>
+            <li><a href="#admissions">Clinic Studies & Trials</a></li>
+            <li>
+                <a href="#register"></a>
+            </li>
+        </ul>
+    </div>
+    <div id="group4">
+        <h5>Contact us</h5>
+        <ul>
+            <li><a href="http://www.mycit.ie/">Email Us: abdul@mycit.ie</a></li>
+            <li><a href="#tele">Tel: +353 785327</a></li>
+        </ul>
+
+    </div>
+    <div id="group5">
+        <ul>
+            <h6>Follow Us</h6>
+            <li>
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+            </li>
+        </ul>
+    </div>
 </div>
-
-
-<p>
-    <div class="homecontainer">
-
-        <div class="myText">
-
-        </div>
-    </div>
-</p>
-
-<p>
-    <div class="homecontainer">
-
-        <div class="myText">
-
-        </div>
-    </div>
-</p>
-
-
-
-<p>
-    <div class="homecontainerleft">
-
-        <div class="myText">
-
-        </div>
-    </div>
-</p>
-
-<p>
-    <div class="homecontainerleft">
-
-        <div class="myText">
-
-</P>
-</div>
-</div>
-</p>
-
-<p>
-    <div class="homecontainerleft">
-
-        <div class="myText">
-
-        </div>
-    </div>
-</p>
-
-
-{% endblock %}
+<hr> {% endblock %}
