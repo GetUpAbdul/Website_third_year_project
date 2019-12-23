@@ -138,9 +138,16 @@ def user_profiling():
         elif record['prediction'] == 0:
             hneg += 1 
 
-    dpercent = int(dpos / (dpos + dneg) * 100)
-    cpercent = int(cpos / (cpos + cneg) * 100)
-    hpercent = int(hpos / (hpos + hneg) * 100)
+    dpercent = 0
+    cpercent = 0
+    hpercent = 0
+    try: 
+        dpercent = int(dpos / (dpos + dneg) * 100)
+        cpercent = int(cpos / (cpos + cneg) * 100)
+        hpercent = int(hpos / (hpos + hneg) * 100)
+    except:
+        print("Error getting percentages")
+        print(dpercent, cpercent, hpercent)
 
     if(diab_request.ok):
         print(diab_request.text)
