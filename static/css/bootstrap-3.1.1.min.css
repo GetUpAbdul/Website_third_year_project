@@ -6895,3 +6895,76 @@ button.close {
         display: none!important
     }
 }
+
+h1 {
+    text-align: center;
+}
+
+#footercontainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightcyan;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    align-items: flex-start;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+#group1 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group2 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group3 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group4 a {
+    background-color: lightcyan;
+    width: 180px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.0;
+    max-height: 40px;
+}
+
+#group5 a {
+    background-color: lightcyan;
+    width: 20px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.0;
+    max-height: 40px;
+}
