@@ -1,8 +1,213 @@
-h6 {
-    color: blue;
+.heartimage {
+    text-decoration: none;
 }
 
-#heartimage {
+.lead {
+    text-align: center;
+}
+
+.links ul {
+    float: left;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.links li {
+    display: block;
+    background-color: #dddddd;
+    padding: 8px;
+}
+
+.links a:hover {
+    background-color: rgb(6, 245, 6);
+}
+
+#space {
+    margin-left: 180px;
+}
+
+#link3 ul {
+    background: #ebeef0;
+    padding: 20px;
+    width: 1150px;
+    text-align: center;
+}
+
+#link3 li {
+    background: #cce5ff;
+    margin: 5px;
+}
+
+.round a {
+    border-radius: 50%;
     float: right;
-    border-radius: none;
+}
+
+#link4 ul {
+    background: #ebeef0;
+    padding: 10px;
+    width: 600px;
+}
+
+#link4 li {
+    background: #cce5ff;
+    margin: 3px;
+}
+
+#link5 ul {
+    background: #ebeef0;
+    list-style-type: circle;
+}
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#footercontainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightcyan;
+    flex-wrap: wrap;
+    margin-top: 150px;
+    align-items: flex-start;
+    width: 1150px;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+#group1 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group2 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group3 a {
+    background-color: lightcyan;
+    width: 150px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.6;
+    max-height: 40px;
+}
+
+#group4 a {
+    background-color: lightcyan;
+    width: 180px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.0;
+    max-height: 40px;
+}
+
+#group5 a {
+    background-color: lightcyan;
+    width: 20px;
+    height: 100px;
+    color: blue;
+    text-decoration: none;
+    float: left;
+    line-height: 1.0;
+    max-height: 40px;
+}
+
+#myBtn {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color: red;
+    /* Set a background color */
+    color: white;
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 10px;
+    /* Rounded corners */
+    font-size: 18px;
+    /* Increase font size */
+}
+
+#myBtn:hover {
+    background-color: #555;
+    /* Add a dark-grey background on hover */
 }
