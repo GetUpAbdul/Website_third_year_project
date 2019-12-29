@@ -120,40 +120,69 @@ def user_profiling():
     hpos = 0
     hneg = 0
 
+    diab_ages = []
+    can_ages = []
+    heart_ages = []
+
+    diab_bmis = []
+    can_bmis = []
+
+    heart_chols = []
+
     for record in diab_records: 
         if record['prediction'] == 1:
             dpos += 1
+            diag_ages.append(record['age'])
+            diab_bmis.append(record['bmi'])
         elif record['prediction'] == 0:
             dneg += 1 
     
     for record in can_records['data']: 
         if record['prediction'] == 1:
             cpos += 1
+            can_ages.append(record['age'])
+            can_bmis.append(record['bmi'])
         elif record['prediction'] == 0:
             cneg += 1 
 
     for record in heart_records['data']: 
         if record['prediction'] == 1:
             hpos += 1
+            heart_ages.append(record['age'])
+            heart_chols.append(record['cholesterol'])
         elif record['prediction'] == 0:
             hneg += 1 
 
-    dpercent = 0
-    cpercent = 0
-    hpercent = 0
-    try: 
-        dpercent = int(dpos / (dpos + dneg) * 100)
-        cpercent = int(cpos / (cpos + cneg) * 100)
-        hpercent = int(hpos / (hpos + hneg) * 100)
-    except:
-        print("Error getting percentages")
-        print(dpercent, cpercent, hpercent)
+    diab_age_mean, can_age_mean, heart_age_mean = 0,0,0
+    diab_bmi_mean, can_bmi_mean = 0,0
+    dpercent, cpercent, hpercent = 0,0,0
 
-    if(diab_request.ok):
-        print(diab_request.text)
-    else:
-        print("Error")
-    return render_template('pages/UserProfiling.html',dpos=dpos, dneg=dneg, cpos=cpos, cneg=cneg, hpos=hpos, hneg=hneg, dpercent=dpercent,cpercent=cpercent,hpercent=hpercent)
+    if len(diab_ages)!=0: diab_age_mean = sum(diab_ages) / len(diab_ages)
+    if len(can_ages)!=0: can_age_mean = sum(can_ages) / len(can_ages)
+    if len(heart_ages)!=0: heart_age_mean = sum(heart_ages) / len(heart_ages)
+
+    if len(diab_bmis)!=0: diab_bmi_mean = sum(diab_bmis) / len(diab_bmis)
+    if len(can_bmis)!=0: can_bmi_mean = sum(can_bmis) / len(can_bmis)
+
+    if len(heart_chols)!=0: heart_chol_mean = sum(heart_chols) / len(heart_chols)
+
+    if dpos!=0: dpercent = int(dpos / (dpos + dneg) * 100)
+    if cpos!=0: cpercent = int(cpos / (cpos + cneg) * 100)
+    if hpos!=0: hpercent = int(hpos / (hpos + hneg) * 100)
+
+    stats = {
+        'diab_age_mean': diab_age_mean,
+        'can_age_mean': can_age_mean,
+        'heart_age_mean': heart_age_mean,
+        'diab_bmi_mean': diab_bmi_mean,
+        'can_bmi_mean': can_bmi_mean,
+        'dpercent': dpercent,
+        'cpercent': cpercent,
+        'hpercent': hpercent,
+        'heart_chol_mean': heart_chol_mean
+    }
+
+    return render_template('pages/UserProfiling.html',dpos=dpos, dneg=dneg, cpos=cpos, cneg=cneg, hpos=hpos, hneg=hneg, stats=stats)
 
 @app.route('/medi_Ai_Interface', methods=['POST', 'GET'])
 def medi_ai_interface():

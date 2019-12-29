@@ -11,19 +11,32 @@
 <div class="chartcontainer">
   <h2 class="chartheader"> Diabetes </h2>
   <canvas width='30' height="10" id="diab"></canvas>
-  <span id="info"> Percentage of patients who return postive Diabetes:<br> {{dpercent}} %</span> 
+  <span id="info"> 
+    Percentage of patients who return postive Diabetes:<br> {{stats['dpercent']}} % <br>
+    Average age of peopole with Diabetes: {{stats['diab_age_mean']}} <br>
+    Average BMI of peopole with Diabetes: {{stats['diab_bmi_mean']}}
+  </span> 
 </div>
 
 <div class="chartcontainer">
 
   <h2 class="chartheader"> Breast Cancer </h2>
   <canvas width='30px' height="10px" id="cancer"></canvas>
-  <span id="info"> Percentage of patients who return positive for Breast Cancer: {{cpercent}} % </span> 
+  <span id="info"> 
+    Percentage of patients who return positive for Breast Cancer: {{stats['cpercent']}} %  <br>
+    Average age of peopole with Diabetes: {{stats['can_age_mean']}} <br>
+    Average BMI of peopole with Diabetes: {{stats['can_bmi_mean']}}
+  </span> 
 </div>
 <div class="chartcontainer">
   <h2 class="chartheader"> Heart Disease </h2>
   <canvas width='30px' height="10px" id="heart"></canvas>
-  <span id="info"> Percentage of patients who return positive for Heart Disease: {{hpercent}} % </span> 
+  <span id="info"> 
+    Percentage of patients who return positive for Heart Disease: {{stats['hpercent']}} % <br>
+    Average age of peopole with Diabetes: {{stats['heart_age_mean']}} <br>
+    Average Cholesterol of peopole with Diabetes: {{stats['heart_chol_mean']}}
+
+  </span> 
 
 </div>
 
