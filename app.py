@@ -4,6 +4,7 @@ import logging
 from logging import Formatter, FileHandler
 from forms import *
 import os, requests, json
+import random 
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -60,7 +61,9 @@ def register():
     # api_url = 'http://127.0.0.1:5010/patient/'
 
     if form.validate_on_submit():
-        patient_data = { 'email': form.email.data, 
+        patient_data = {
+                         'id': random.randint(0, 100000) 
+                         'email': form.email.data, 
                          'username': form.username.data, 
                          'first_name': form.first_name.data, 
                          'last_name': form.last_name.data, 
@@ -204,10 +207,6 @@ def medi_ai_interface():
         flash('Account couldn\'t be created')
         print('"ERROR"')
     return render_template('pages/Medi_AI_Interface.html', records=records, form=form)
-
-@app.route('/aggregationOfNewPatientData.html')
-def aggregationOfNewPatientData():
-    return render_template('pages/AggregationOfNewPatientData.html')
 
 @app.route('/HeartDiseases')
 def heartDiseases():

@@ -9,7 +9,7 @@
     <meta name="author" content="Abdul Hadi Mirzada">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="Web Patient Medi-Screen,Medi-Screen,Cancer treatment,Radiation Therapy,
-    Chemotherapy,Glycated hemoglobin,User Profiling,Aggregation of new patient data,Cancer,What Is Cancer,Types of Cancer,When Cancer Spreads,How Cancer Arises,WHAT IS DIABETES,Types of diabetes,Type 1 diabetes,Type 2 diabetes,Heart diseases,know about heart disease">
+    Chemotherapy,Glycated hemoglobin,User Profiling, Cancer,What Is Cancer,Types of Cancer,When Cancer Spreads,How Cancer Arises,WHAT IS DIABETES,Types of diabetes,Type 1 diabetes,Type 2 diabetes,Heart diseases,know about heart disease">
     <!-- /meta -->
 
     <!-- styles -->
@@ -62,7 +62,6 @@
                     <ul class="nav navbar-nav">
                         <li {% if request.endpoint=='Medi-AI Interface' %} class="active" {% endif %}><a href="{{ url_for('medi_ai_interface') }}">Medi-AI Interface</a></li>
                         <li {% if request.endpoint=='User Profiling' %} class="active" {% endif %}><a href="{{ url_for('user_profiling') }}">User Profiling</a></li>
-                        <li {% if request.endpoint=='Aggregation of new patient data' %} class="active" {% endif %}><a href="{{ url_for('aggregationOfNewPatientData') }}">Aggregation of new patient data</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown">More Information <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -91,7 +90,6 @@
                 {% endif %} {% if class==IP %}
                 <li {% if request.endpoint=='User Profiling' %} class="active" {% endif %}><a href="{{ url_for('user_profiling') }}">User Profiling</a></li>
                 {% endif %}
-                <li {% if request.endpoint=='Aggregation of new patient data' %} class="active" {% endif %}><a href="{{ url_for('aggregationOfNewPatientData') }}">Aggregation of new patient data</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">More Information <b class="caret"></b></a>
                     <ul class="dropdown-menu">
