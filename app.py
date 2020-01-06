@@ -62,7 +62,7 @@ def register():
 
     if form.validate_on_submit():
         patient_data = {
-                         'id': random.randint(0, 100000) 
+                         'id': random.randint(0, 100000),
                          'email': form.email.data, 
                          'username': form.username.data, 
                          'first_name': form.first_name.data, 
